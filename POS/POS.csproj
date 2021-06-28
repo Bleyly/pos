@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-pos-1FFAD770-3B63-4F78-82CF-3D18DD81EA7D</UserSecretsId>
+    <UserSecretsId>aspnet-POS-D5B7A952-2E9E-467A-928C-A12D4583D92D</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +15,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\POS.Data\POS.Data.csproj" />
+    <ProjectReference Include="..\POS.Service\POS.Service.csproj" />
   </ItemGroup>
 
 </Project>

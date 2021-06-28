@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "POS"
+		},
+		{
+			"path": "POS.Data"
+		},
+		{
+			"path": "POS.Service"
+		},
+		{
+			"path": "POS.Tests"
+		}
+	],
+	"settings": {}
+}

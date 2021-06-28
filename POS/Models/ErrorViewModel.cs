@@ -1,6 +1,6 @@
 using System;
 
-namespace pos.Models
+namespace POS.Models
 {
     public class ErrorViewModel
     {

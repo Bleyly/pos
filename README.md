@@ -1,2 +1,0 @@
-# pos
-Punto de venta 

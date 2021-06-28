@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using pos.Models;
+using POS.Models;
 
-namespace pos.Controllers
+namespace POS.Controllers
 {
     public class HomeController : Controller
     {
