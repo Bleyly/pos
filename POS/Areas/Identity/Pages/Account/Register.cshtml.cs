@@ -13,22 +13,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using POS.Data;
 
 namespace POS.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<User> userManager,
+            RoleManager<IdentityRole<int>> roleManager,
+            SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -48,6 +49,13 @@ namespace POS.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required, Display(Name = "Nombre")] public string Name { get; set; }
+            [Required, Display(Name = "Apellido")] public string LastName { get; set; }
+            [Required, Display(Name = "Dirección")] public string Address { get; set; }
+            [Required, Display(Name = "Ciudad")] public string City { get; set; }
+            [Required] public string Sector { get; set; }
+            [Display(Name = "Teléfono")] public string PhoneNumber { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -77,7 +85,7 @@ namespace POS.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new User { UserName = Input.Email, Email = Input.Email };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
