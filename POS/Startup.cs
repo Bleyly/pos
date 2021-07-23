@@ -40,7 +40,9 @@ namespace POS
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequiredLength = 8;
             })
+                .AddRoles<IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
