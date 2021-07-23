@@ -9,7 +9,7 @@ using POS.Data;
 namespace POS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210723010810_Initial")]
+    [Migration("20210723021635_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
