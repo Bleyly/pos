@@ -1,7 +1,10 @@
+using System.Threading.Tasks;
+
 namespace POS.Data
 {
     public interface IUnitOfWork
     {
+        Task SaveChangesAsync();
         public IRepository<Color> Colors { get; set; }
         public IRepository<Product> Products { get; set; }
         public IRepository<Purchase> Purchases { get; set; }
