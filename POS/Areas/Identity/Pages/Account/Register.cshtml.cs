@@ -53,7 +53,6 @@ namespace POS.Areas.Identity.Pages.Account
             [Required, Display(Name = "Apellido")] public string LastName { get; set; }
             [Required, Display(Name = "Dirección")] public string Address { get; set; }
             [Required, Display(Name = "Ciudad")] public string City { get; set; }
-            [Required] public string Sector { get; set; }
             [Display(Name = "Teléfono")] public string PhoneNumber { get; set; }
 
             [Required]
