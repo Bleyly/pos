@@ -17,7 +17,7 @@ namespace POS.Controllers
     {
         private IService<Type> _typeService;
         private IWebHostEnvironment _hostEnvironment;
-        public ProductController(IService<Product> service, IService<Type> typeService, IWebHostEnvironment hostEnvironment) : base(service)
+        public ProductController(IProductService service, IService<Type> typeService, IWebHostEnvironment hostEnvironment) : base(service)
         {
             _hostEnvironment = hostEnvironment;
             _typeService = typeService;
@@ -42,7 +42,8 @@ namespace POS.Controllers
                     Description = productViewModel.Description,
                     Name = productViewModel.Name,
                     ImageURL = imageURL,
-                    TypeId = productViewModel.TypeId
+                    TypeId = productViewModel.TypeId,
+                    Price = productViewModel.Price
                 };
 
                 await _service.CreateAsync(product);
@@ -76,6 +77,7 @@ namespace POS.Controllers
                     Name = product.Name,
                     Quantity = product.Quantity,
                     TypeId = product.TypeId,
+                    Price = product.Price
                 });
             }
             catch (Exception)
@@ -94,6 +96,7 @@ namespace POS.Controllers
                 product.Description = productViewModel.Description;
                 product.Name = productViewModel.Name;
                 product.TypeId = productViewModel.TypeId;
+                product.Price = productViewModel.Price;
 
                 if (productViewModel.Image != null)
                 {

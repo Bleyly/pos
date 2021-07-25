@@ -11,6 +11,8 @@ namespace POS.Data
         [Required, Display(Name = "Tipo")] public int TypeId { get; set; }
         public Type Type { get; set; }
 
+        public decimal Price { get; set; }
+
         public IEnumerable<ProductSizeColor> SizesAndColors { get; set; }
     }
 }
