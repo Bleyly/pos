@@ -7,7 +7,7 @@ namespace POS.Controllers
     [Authorize(Roles = "Admin")]
     public sealed class ColorController : BaseController<Color>
     {
-        public ColorController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public ColorController(IService<Color> service) : base(service)
         {
         }
     }

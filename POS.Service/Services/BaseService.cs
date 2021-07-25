@@ -13,30 +13,30 @@ namespace POS.Service
             _unitOfWork = unitOfWork;
         }
 
-        public async Task CreateAsync(T entity)
+        public virtual async Task CreateAsync(T entity)
         {
             await _unitOfWork.GetRepository<T>().CreateAsync(entity);
             await _unitOfWork.SaveChangesAsync();
 
         }
 
-        public async Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             await _unitOfWork.GetRepository<T>().DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _unitOfWork.GetRepository<T>().GetAllAsync();
         }
 
-        public async Task<T> GetAsync(int id)
+        public virtual async Task<T> GetAsync(int id)
         {
             return await _unitOfWork.GetRepository<T>().GetAsync(id);
         }
 
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             _unitOfWork.GetRepository<T>().Update(entity);
             await _unitOfWork.SaveChangesAsync();

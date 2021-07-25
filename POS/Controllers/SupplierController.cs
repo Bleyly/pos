@@ -7,7 +7,7 @@ namespace POS.Controllers
     [Authorize(Roles = "Admin")]
     public sealed class SupplierController : BaseController<Supplier>
     {
-        public SupplierController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public SupplierController(IService<Supplier> service) : base(service)
         {
         }
     }

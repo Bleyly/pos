@@ -10,9 +10,9 @@ namespace POS.Controllers
     {
         protected readonly IService<T> _service;
 
-        public BaseController(IUnitOfWork unitOfWork)
+        public BaseController(IService<T> service)
         {
-            _service = new BaseService<T>(unitOfWork);
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
@@ -20,9 +20,9 @@ namespace POS.Controllers
             return View(await _service.GetAllAsync());
         }
 
-        public IActionResult Create()
+        public virtual Task<IActionResult> Create()
         {
-            return View();
+            return Task.FromResult<IActionResult>(View());
         }
 
         [HttpPost]
@@ -39,7 +39,7 @@ namespace POS.Controllers
             }
         }
 
-        public async Task<IActionResult> Edit([FromRoute] int id)
+        public virtual async Task<IActionResult> Edit([FromRoute] int id)
         {
             try
             {
@@ -59,11 +59,11 @@ namespace POS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(T entity)
+        public async Task<IActionResult> Edit(T entity)
         {
             try
             {
-                _service.UpdateAsync(entity);
+                await _service.UpdateAsync(entity);
 
                 return RedirectToAction(nameof(Index));
             }

@@ -7,7 +7,7 @@ namespace POS.Controllers
     [Authorize(Roles = "Admin")]
     public sealed class SizeController : BaseController<Size>
     {
-        public SizeController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public SizeController(IService<Size> service) : base(service)
         {
 
         }

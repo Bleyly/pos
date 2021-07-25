@@ -10,7 +10,7 @@ namespace POS.Data
             _context = context;
 
             Colors = new Repository<Color>(context);
-            Products = new Repository<Product>(context);
+            Products = new ProductRepository(context);
             Purchases = new Repository<Purchase>(context);
             Sales = new Repository<Sale>(context);
             Sizes = new Repository<Size>(context);
