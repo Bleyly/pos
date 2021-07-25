@@ -1,0 +1,38 @@
+@model Size
+@{
+    ViewData["Title"] = "Editar Size";
+}
+
+<div class="row flex-column">
+    <h1>@ViewData["Title"]</h1>
+    <form method="post">
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control">
+
+                </textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
