@@ -31,7 +31,6 @@ namespace POS
 
             services.AddDefaultIdentity<User>((options) =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequiredLength = 8;
             })
