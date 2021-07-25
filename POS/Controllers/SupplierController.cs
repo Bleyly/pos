@@ -5,9 +5,9 @@ using POS.Service;
 namespace POS.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public sealed class ColorController : BaseController<Color>
+    public sealed class SupplierController : BaseController<Supplier>
     {
-        public ColorController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public SupplierController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

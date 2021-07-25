@@ -20,6 +20,9 @@ namespace POS.Data
 
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 
+        public IRepository<T> GetRepository<T>() where T : class
+            => new Repository<T>(_context);
+
         public IRepository<Color> Colors { get; set; }
         public IRepository<Product> Products { get; set; }
         public IRepository<Purchase> Purchases { get; set; }

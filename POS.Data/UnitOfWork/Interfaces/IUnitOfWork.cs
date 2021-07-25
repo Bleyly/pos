@@ -5,6 +5,7 @@ namespace POS.Data
     public interface IUnitOfWork
     {
         Task SaveChangesAsync();
+        IRepository<T> GetRepository<T>() where T : class;
         public IRepository<Color> Colors { get; set; }
         public IRepository<Product> Products { get; set; }
         public IRepository<Purchase> Purchases { get; set; }
