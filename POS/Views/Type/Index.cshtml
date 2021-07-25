@@ -1,0 +1,110 @@
+@model IEnumerable<POS.Data.Type>
+@{
+    ViewData["Title"] = "Tipos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class="mt-5">
+        <a asp-action="Create" class="btn btn-outline-primary float-right mb-3">
+            <i class="fas fa-plus-circle"></i>
+            Agregar
+        </a>
+        <table class="table table-striped border">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descrpción</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No hay registros</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var Type in Model)
+                    {
+                        <tr>
+                            <td>@Type.Id</td>
+                            <td>@Type.Name</td>
+                            <td>@Type.Description</td>
+                            <td>
+                                <button type="button" class="btn btn-icon btn-outline-primary edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-icon btn-outline-danger delete" data-toggle="modal"
+                            data-target="#deleteModal">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Estas seguro que quieres Eliminar este registro?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                El registro se eliminará permanentemente
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel-delete" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success confirm-delete">Si</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let id = 0;
+
+    $(document).ready(() => {
+        $(".edit").on("click", function () {
+            const tr = this.closest("tr");
+
+            id = tr.firstElementChild.textContent;
+            window.location.href = `/Type/Edit/${id}`;
+        })
+
+        $(".delete").on("click", function () {
+            const tr = this.closest("tr");
+
+            id = tr.firstElementChild.textContent;
+        })
+
+        $(".confirm-delete").on("click", async function () {
+            fetch(`/Type/Delete/${id}`, { method: "post" }).then((result) => {
+                if (result.ok) {
+                    alert("Registro borrado con exito");
+                    window.location.reload();
+                } else {
+                    alert("Hubo un error contacte con un administrador");
+                }
+
+            }).catch((error) => alert("Hubo un error contacte con un administrador"));
+        })
+
+        $(".cancel-delete").on("click", function () {
+            id = 0;
+        })
+    })
+</script>
