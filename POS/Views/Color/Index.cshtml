@@ -100,9 +100,10 @@
                 if (result.ok) {
                     alert("Registro borrado con exito");
                     window.location.reload();
+                } else {
+                    alert("Hubo un error contacte con un administrador");
                 }
 
-                alert("Hubo un error contacte con un administrador");
             }).catch((error) => alert("Hubo un error contacte con un administrador"));
         })
 
