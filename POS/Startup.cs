@@ -40,7 +40,7 @@ namespace POS
             services.AddControllersWithViews();
 
             services.AddScoped<IService<Color>, BaseService<Color>>();
-            services.AddScoped<IService<Product>, ProductService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IService<Size>, BaseService<Size>>();
             services.AddScoped<IService<Supplier>, BaseService<Supplier>>();
             services.AddScoped<IService<Type>, BaseService<Type>>();
