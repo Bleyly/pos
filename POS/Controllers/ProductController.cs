@@ -31,7 +31,7 @@ namespace POS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateWithImage(ProductViewModel productViewModel)
+        public async Task<IActionResult> CreateWithImage(ProductCreateViewModel productViewModel)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace POS.Controllers
 
                 ViewData["Types"] = await _typeService.GetAllAsync();
 
-                return View(new ProductViewModel
+                return View(new ProductEditViewModel
                 {
                     Description = product.Description,
                     Id = product.Id,
@@ -87,7 +87,7 @@ namespace POS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditWithImage(ProductViewModel productViewModel)
+        public async Task<IActionResult> EditWithImage(ProductEditViewModel productViewModel)
         {
             try
             {

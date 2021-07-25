@@ -49,18 +49,18 @@ namespace POS.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required, Display(Name = "Nombre")] public string Name { get; set; }
-            [Required, Display(Name = "Apellido")] public string LastName { get; set; }
-            [Required, Display(Name = "Dirección")] public string Address { get; set; }
-            [Required, Display(Name = "Ciudad")] public string City { get; set; }
+            [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Nombre")] public string Name { get; set; }
+            [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Apellido")] public string LastName { get; set; }
+            [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Dirección")] public string Address { get; set; }
+            [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Ciudad")] public string City { get; set; }
             [Display(Name = "Teléfono")] public string PhoneNumber { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} es requerido")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} es requerido")]
             [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} y un máximo de {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]

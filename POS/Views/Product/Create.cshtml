@@ -1,4 +1,4 @@
-@model ProductViewModel
+@model ProductCreateViewModel
 @{
     ViewData["Title"] = "Crear Producto";
 }
@@ -47,7 +47,7 @@
                         <span class="input-group-text">Subir</span>
                     </div>
                     <div class="custom-file">
-                        <input required asp-for="Image" accept="image/*" type="file" class="custom-file-input">
+                        <input asp-for="Image" accept="image/*" type="file" class="custom-file-input">
                         <label asp-for="Image" class="custom-file-label"></label>
                     </div>
                 </div>

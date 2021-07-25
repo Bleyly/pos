@@ -43,12 +43,12 @@ namespace POS.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "{0} es requerido")]
             [EmailAddress]
             [Display(Name = "Correo Electrónico")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} es requerido")]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]
             public string Password { get; set; }

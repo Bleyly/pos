@@ -4,9 +4,9 @@ using POS.Data;
 
 namespace POS.Models
 {
-    public class ProductViewModel : Product
+    public class ProductCreateViewModel : Product
     {
-        [Display(Name = "Imagen")]
+        [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Imagen")]
         public IFormFile Image { get; set; }
     }
 }

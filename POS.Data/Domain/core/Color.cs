@@ -4,6 +4,6 @@ namespace POS.Data
 {
     public class Color : Entity
     {
-        [Required, Display(Name = "Valor Hexadecimal")] public string Hexadecimal { get; set; }
+        [Required(ErrorMessage = "{0} es requerido"), Display(Name = "Valor Hexadecimal")] public string Hexadecimal { get; set; }
     }
 }
