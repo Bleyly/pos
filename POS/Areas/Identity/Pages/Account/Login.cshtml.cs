@@ -88,7 +88,12 @@ namespace POS.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    if (User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Index", "Product");
+                    }
+
+                    return RedirectToAction("Index", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {
