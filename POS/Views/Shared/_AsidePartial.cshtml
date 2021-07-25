@@ -1,0 +1,20 @@
+@{
+    int? typeId = ViewContext.RouteData.Values["typeId"] as int?;
+    Console.WriteLine(typeId);
+}
+
+@if (ViewData["Title"].Equals("Articulos"))
+{
+    <aside class="aside position-absolute p-3 overflow-hidden ">
+        <h2>Catergorias</h2>
+        <ul class="nav flex-column">
+            @foreach (var type in ViewData["Types"] as IEnumerable<POS.Data.Type>)
+            {
+                <li class="nav-item">
+                    <a class='@(ViewData["typeId"] as int? == type.Id ? "active" : "") nav-link'
+                href="/?typeId=@type.Id">@type.Name</a>
+                </li>
+            }
+        </ul>
+    </aside>
+}
